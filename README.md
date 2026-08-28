@@ -6,11 +6,11 @@ Companion repository for the manuscript
 The work develops a control-barrier-function framework for integer-order systems in which retained barrier history conditions the admissible control authority, while safety is certified with respect to the original state-defined physical safe set.
 
 <p align="center">
-  <a href="YOUR_CURRENT_WEBSITE_URL"><b>Project Website</b></a>
+  <a href="https://egecaltunkaya.github.io/history-aware-cbf/"><b>Project Website</b></a>
   &nbsp;&nbsp;•&nbsp;&nbsp;
   <b>arXiv — coming soon</b>
   &nbsp;&nbsp;•&nbsp;&nbsp;
-  <a href="docs/History_Aware_Control_Barrier_Functions_with_Nonsingular_Fading_Memory_Kernels_Supplementary_Material.pdf"><b>Supplementary Material</b></a>
+  <a href="https://egecaltunkaya.github.io/history-aware-cbf/History_Aware_Control_Barrier_Functions_with_Nonsingular_Fading_Memory_Kernels_Supplementary_Material.pdf"><b>Supplementary Material</b></a>
 </p>
 
 ---
@@ -56,7 +56,7 @@ The stress-test study additionally shows:
 - Mean RMSE reduction: **30.9%**.
 - In **18/18** low-demand negative-control cases, CF-FOCBF remains inactive, whereas the policy-preserving state-only CBF intervenes.
 
-Full figures and extended validation are available on the **Project Website**.
+Full figures and extended validation are available on the **[Project Website](https://egecaltunkaya.github.io/history-aware-cbf/)**.
 
 ---
 
@@ -174,7 +174,7 @@ The numerical datasets underlying the reported figures and tables are available 
 
 Extended numerical validation, stress tests, and the bi-exponential and Gaussian kernel studies are provided in the supplementary document:
 
-**[Open the Supplementary Material](docs/History_Aware_Control_Barrier_Functions_with_Nonsingular_Fading_Memory_Kernels_Supplementary_Material.pdf)**
+**[Open the Supplementary Material](https://egecaltunkaya.github.io/history-aware-cbf/History_Aware_Control_Barrier_Functions_with_Nonsingular_Fading_Memory_Kernels_Supplementary_Material.pdf)**
 
 ---
 
