@@ -10,7 +10,7 @@ The work develops a control-barrier-function framework for integer-order systems
   &nbsp;&nbsp;•&nbsp;&nbsp;
   <b>arXiv — coming soon</b>
   &nbsp;&nbsp;•&nbsp;&nbsp;
-  <a href="https://egecaltunkaya.github.io/history-aware-cbf/History_Aware_Control_Barrier_Functions_with_Nonsingular_Fading_Memory_Kernels_Supplementary_Material.pdf"><b>Supplementary Material</b></a>
+  <a href="docs/supplementary.pdf"><b>Supplementary Material</b></a>
 </p>
 
 ---
@@ -174,7 +174,7 @@ The numerical datasets underlying the reported figures and tables are available 
 
 Extended numerical validation, stress tests, and the bi-exponential and Gaussian kernel studies are provided in the supplementary document:
 
-**[Open the Supplementary Material](https://egecaltunkaya.github.io/history-aware-cbf/History_Aware_Control_Barrier_Functions_with_Nonsingular_Fading_Memory_Kernels_Supplementary_Material.pdf)**
+**[Open the Supplementary Material](docs/supplementary.pdf)**
 
 ---
 
