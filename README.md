@@ -1,96 +1,103 @@
 # History-Aware Control Barrier Functions with Nonsingular Fading-Memory Kernels
 
-Companion repository for the manuscript  
-**“History-Aware Control Barrier Functions with Nonsingular Fading-Memory Kernels.”**
-
-The work develops a control-barrier-function framework for integer-order systems in which retained barrier history conditions the admissible control authority, while safety is certified with respect to the original state-defined physical safe set.
+**Ege C. Altunkaya · Esra Demir · İbrahim Özkol**  
+Aviation Institute, Istanbul Technical University
 
 <p align="center">
   <a href="https://egecaltunkaya.github.io/history-aware-cbf/"><b>Project Website</b></a>
   &nbsp;&nbsp;•&nbsp;&nbsp;
-  <b>arXiv — coming soon</b>
-  &nbsp;&nbsp;•&nbsp;&nbsp;
   <a href="docs/supplementary.pdf"><b>Supplementary Material</b></a>
+  &nbsp;&nbsp;•&nbsp;&nbsp;
+  <b>arXiv — coming soon</b>
 </p>
 
 ---
 
 ## Overview
 
-Conventional state-only control barrier functions assign the same admissible control set whenever the current state is the same. This work considers safety policies for which the available control authority also depends on the retained history of the barrier.
+This repository accompanies the manuscript **“History-Aware Control Barrier Functions with Nonsingular Fading-Memory Kernels.”**
 
-The proposed framework introduces a nonsingular fading-memory operator into the barrier construction and establishes forward invariance of the original physical safe set through a Volterra-resolvent argument.
+The paper addresses a limitation of state-only safety filters: two trajectories can reach the **same current physical state** while carrying different recent safety-margin histories, yet a state-only CBF must assign them the same admissible control set.
 
-The resulting policy can therefore distinguish trajectories that reach the same current state with different histories.
-
-### Main contributions
-
-- A nonsingular fractional-memory CBF formulation for integer-order dynamical systems.
-- A forward-invariance result linking the history-dependent auxiliary certificate to the original physical safe set.
-- A formal history-conditioned safety policy that allows admissible control authority to vary with retained barrier history.
-- Exact finite-dimensional realizations for exponential kernels, including the one-state Caputo–Fabrizio case.
-- Numerical validation demonstrating the same mechanism for non-CF kernels, including bi-exponential and Gaussian fading memory.
-
----
-
-## Numerical study
-
-The method is evaluated on a high-incidence aircraft benchmark with redundant control effectors.
-
-Three preparation trajectories reach the same activation state with different retained histories. The subsequent maneuver is identical in all cases.
-
-For the CF realization, the normalized admissible-set volumes at engagement are
-
-| History | Normalized admissible volume |
-|---|---:|
-| Adverse | 0.242 |
-| Neutral | 0.616 |
-| Favorable | 0.823 |
-| History-blind policy-preserving CBF | 0.072 |
-
-The stress-test study additionally shows:
-
-- **36/36** high-demand cases are hard-safe under CF-FOCBF.
-- **36/36** are policy-safe and feasible.
-- CF-FOCBF improves tracking RMSE over the policy-preserving state-only CBF in **36/36** cases.
-- Mean RMSE reduction: **30.9%**.
-
-Full figures and extended validation are available on the **[Project Website](https://egecaltunkaya.github.io/history-aware-cbf/)**.
-
----
-
-## Beyond the Caputo–Fabrizio kernel
-
-The theoretical construction is not restricted to the exponential CF kernel.
-
-For a generic retained-memory term:
+We introduce a history-aware CBF framework for **integer-order, delay-free control-affine systems** in which a nonsingular fading-memory kernel retains signed safety-margin variation,
 
 ```math
 q_{\kappa}(t)
 =
 \int_{t_0}^{t}
-\kappa(t-\tau)\,\dot h(\tau)\,d\tau .
+\kappa(t-\tau)\,\dot h(\tau)\,d\tau ,
 ```
 
-The supplementary study considers three realizations.
+and uses it to enforce a reserve policy on the current margin. The resulting admissible-control set depends on retained history while the certified physical safe set remains
+
+```math
+\mathcal C=\{x:h(x)\ge 0\}.
+```
+
+A positive Volterra-resolvent argument proves that nonnegativity of the auxiliary history-dependent barrier implies forward invariance of this original state-defined safe set. The result does **not** require the memory operator to admit a finite-dimensional realization.
+
+---
+
+## Main result
+
+At the same current state, different compatible histories can produce different history-aware admissible sets,
+
+```math
+\mathcal U_H(x,\mathcal H_t)
+=
+\{u\in\mathcal U:Q_{\kappa}(x,\mathcal H_t,u)\ge 0\}.
+```
+
+A history-blind policy-preserving filter must instead remain inside the common intersection over all compatible histories. This creates a fundamental loss of available control authority whenever the intended reserve policy is history dependent.
+
+The framework therefore separates three questions that a state-only hard-safety CBF does not:
+
+- **Is the physical safe set preserved?**
+- **Is the prescribed reserve policy preserved?**
+- **How much control authority remains admissible for the retained history?**
+
+---
+
+## ADMIRE envelope-protection study
+
+The manuscript evaluates the Caputo–Fabrizio specialization on a high-incidence ADMIRE benchmark with redundant control effectors.
+
+Three preparation trajectories reach the same activation state to numerical tolerance but retain different fading-memory values. At that common checkpoint, the normalized admissible-control volumes are:
+
+| Controller / history | Normalized volume |
+|---|---:|
+| CF-FOCBF — adverse | **0.242** |
+| CF-FOCBF — neutral | **0.616** |
+| CF-FOCBF — favorable | **0.823** |
+| History-blind policy-preserving CBF | **0.072** |
+
+With fixed gains over **36 high-demand cases**:
+
+- CF-FOCBF preserves the physical incidence bound in **36/36** cases.
+- CF-FOCBF preserves the reserve policy in **36/36** cases.
+- No CF quadratic program is infeasible.
+- CF-FOCBF reduces tracking RMSE relative to the history-blind policy-preserving CBF in **36/36** cases, by **30.9% on average**.
+- A performance-optimal state-only CBF preserves the physical bound but violates the reserve policy in **36/36** cases.
+
+These results distinguish **physical safety**, **policy compliance**, and **tracking performance** rather than treating them as interchangeable.
+
+---
+
+## Beyond the CF realization
+
+The theorem is formulated directly for admissible nonsingular fading-memory kernels, not only for the exponential CF kernel.
+
+The companion validation therefore includes:
 
 ### Caputo–Fabrizio
 
 ```math
-\kappa_{\mathrm{CF}}(s)
-=
-\kappa_0 e^{-\lambda s}.
+\kappa_{\mathrm{CF}}(s)=\kappa_0 e^{-\lambda s},
 ```
 
-This kernel admits the exact one-state realization
+with an exact **one-state** realization.
 
-```math
-\dot q
-=
--\lambda q+\kappa_0\dot h .
-```
-
-### Bi-exponential kernel
+### Bi-exponential
 
 ```math
 \kappa_{\mathrm{BE}}(s)
@@ -100,30 +107,12 @@ This kernel admits the exact one-state realization
 a e^{-\lambda_1 s}
 +
 (1-a)e^{-\lambda_2 s}
-\right].
+\right],
 ```
 
-An exact two-state realization is obtained from
+with an exact **two-state** realization.
 
-```math
-\dot q_1
-=
--\lambda_1 q_1+\kappa_0\dot h,
-\qquad
-\dot q_2
-=
--\lambda_2 q_2+\kappa_0\dot h,
-```
-
-with
-
-```math
-q
-=
-a q_1+(1-a)q_2 .
-```
-
-### Gaussian kernel
+### Gaussian
 
 ```math
 \kappa_{\mathrm G}(s)
@@ -131,55 +120,27 @@ a q_1+(1-a)q_2 .
 \kappa_0
 \exp\!\left[
 -\left(\frac{s}{\tau_G}\right)^2
-\right].
+\right],
 ```
 
-The retained-memory term is evaluated directly from history:
+evaluated directly from retained history rather than replaced by a finite-dimensional exponential surrogate.
 
-```math
-q_{\mathrm G}(t)
-=
-\int_{t_0}^{t}
-\kappa_{\mathrm G}(t-\tau)\,\dot h(\tau)\,d\tau .
-```
-
-The purpose of these comparisons is to demonstrate that the history-conditioned authority mechanism is not specific to the one-state CF implementation; they are not intended as a cross-kernel performance ranking.
+The alternative-kernel studies are intended to test the **general history-conditioned mechanism**, not to rank kernels by tracking performance.
 
 ---
 
-## Repository structure
+## Project resources
 
-```text
-history-aware-cbf/
-├── docs/                  # GitHub Pages project website
-├── matlab/                # MATLAB implementation / validation scripts
-├── figure_templates/      # Approved MATLAB figure templates
-└── README.md
-```
-
-The public website is served from the `docs/` directory.
-
----
-
-## Code and data availability
-
-A cleaned and documented MATLAB implementation is being prepared for public release.
-
-The numerical datasets underlying the reported figures and tables are available from the corresponding author upon reasonable request.
-
----
-
-## Supplementary material
-
-Extended high-demand validation together with the bi-exponential and Gaussian kernel studies are provided in the supplementary document:
-
-**[Open the Supplementary Material](docs/supplementary.pdf)**
+- **Project website:** https://egecaltunkaya.github.io/history-aware-cbf/
+- **Supplementary material:** [docs/supplementary.pdf](docs/supplementary.pdf)
+- **MATLAB implementation:** a cleaned and documented release is being prepared.
+- **Numerical datasets:** available from the corresponding author upon reasonable request.
 
 ---
 
 ## Citation
 
-If you use this work, please cite:
+The bibliographic entry will be updated when the arXiv / final publication metadata becomes available.
 
 ```bibtex
 @article{altunkaya2026historyaware,
@@ -190,14 +151,10 @@ If you use this work, please cite:
 }
 ```
 
-The citation entry will be updated when the final arXiv / publication metadata becomes available.
-
 ---
 
-## Authors
+## Contact
 
-**Ege C. Altunkaya** · **Esra Demir** · **İbrahim Özkol**  
+**Ege C. Altunkaya**  
 Aviation Institute, Istanbul Technical University  
-Istanbul, Türkiye
-
-For questions regarding the work or numerical datasets, please contact the corresponding author.
+Corresponding author: [altunkaya16@itu.edu.tr](mailto:altunkaya16@itu.edu.tr)
