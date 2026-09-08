@@ -54,7 +54,6 @@ The stress-test study additionally shows:
 - **36/36** are policy-safe and feasible.
 - CF-FOCBF improves tracking RMSE over the policy-preserving state-only CBF in **36/36** cases.
 - Mean RMSE reduction: **30.9%**.
-- In **18/18** low-demand negative-control cases, CF-FOCBF remains inactive, whereas the policy-preserving state-only CBF intervenes.
 
 Full figures and extended validation are available on the **[Project Website](https://egecaltunkaya.github.io/history-aware-cbf/)**.
 
@@ -172,7 +171,7 @@ The numerical datasets underlying the reported figures and tables are available 
 
 ## Supplementary material
 
-Extended numerical validation, stress tests, and the bi-exponential and Gaussian kernel studies are provided in the supplementary document:
+Extended high-demand validation together with the bi-exponential and Gaussian kernel studies are provided in the supplementary document:
 
 **[Open the Supplementary Material](docs/supplementary.pdf)**
 
