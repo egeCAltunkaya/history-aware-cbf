@@ -93,14 +93,13 @@ window.MathJax = {
 <p class="section-index">02 · Stress-test validation</p>
 <h2>The effect persists beyond a selected trajectory</h2>
 <p>
-            The high-demand study sweeps command level, release duration, and prepared history. A separate low-demand study acts as a negative control for unnecessary intervention. Controller parameters are fixed within each study.
+            The high-demand study sweeps command level, release duration, and prepared history while keeping the controller parameters fixed. The resulting atlas shows that the main claim is not tied to a single selected trajectory.
           </p>
 </div>
 <div aria-label="Stress-test headline metrics" class="metrics">
 <div class="metric"><b>36/36</b><span>CF hard-safe</span></div>
 <div class="metric"><b>36/36</b><span>CF policy-safe and feasible</span></div>
 <div class="metric"><b>30.9%</b><span>mean RMSE reduction vs. PP-CBF</span></div>
-<div class="metric"><b>0/18</b><span>CF low-demand interventions</span></div>
 </div>
 <figure class="paper-figure wide-figure">
 <a aria-label="Open full-resolution RMSE atlas" class="figure-link" href="assets/figures/stress_rmse_atlas.png" rel="noopener" target="_blank">
@@ -110,14 +109,7 @@ window.MathJax = {
 <strong>High-demand sweep.</strong> CF-FOCBF reduces tracking RMSE relative to the history-blind policy-preserving CBF in every one of the 36 tested command/history combinations.
           </figcaption>
 </figure>
-<figure class="paper-figure wide-figure secondary-figure">
-<a aria-label="Open full-resolution safety audit figure" class="figure-link" href="assets/figures/stress_safety_negative_controls.png" rel="noopener" target="_blank">
-<img alt="High-demand safety audit and low-demand negative controls" decoding="async" loading="lazy" src="assets/figures/preview/stress_safety_negative_controls.webp"/>
-</a>
-<figcaption>
-<strong>Safety audit and negative controls.</strong> CF is feasible, hard-safe, and policy-safe in all 36 high-demand cases. The performance-optimal state-only baseline violates the prescribed policy in all 36. In 18 low-demand cases, CF remains inactive while the policy-preserving state-only CBF intervenes in every case.
-          </figcaption>
-</figure>
+
 </div>
 </section>
 <section class="section" id="beyond-cf">
@@ -194,7 +186,7 @@ q_{\kappa}(t)=\int_{t_0}^{t}\kappa(t-\tau)\,\dot h(\tau)\,d\tau,\qquad s=t-\tau\
 <a aria-label="Open full-resolution Gaussian admissible-set figure" class="figure-link" href="assets/figures/gaussian_admissibleSets.png" rel="noopener" target="_blank">
 <img alt="Gaussian and CF admissible input sets" decoding="async" loading="lazy" src="assets/figures/preview/gaussian_admissibleSets.webp"/>
 </a>
-<figcaption><strong>Gaussian authority geometry.</strong> Normalized volumes are 0.509, 0.550, and 0.635 for adverse, neutral, and favorable histories. The dashed geometry is the history-matched CF reference.</figcaption>
+<figcaption><strong>Gaussian authority geometry.</strong> Normalized volumes are 0.101, 0.370, and 0.686 for adverse, neutral, and favorable histories. The dashed geometry is the history-matched CF reference.</figcaption>
 </figure>
 </article>
 </div>
@@ -209,7 +201,7 @@ q_{\kappa}(t)=\int_{t_0}^{t}\kappa(t-\tau)\,\dot h(\tau)\,d\tau,\qquad s=t-\tau\
 <div class="resource-grid">
 <article>
 <h3>Supplementary material</h3>
-<p>Extended stress tests and the bi-exponential and Gaussian kernel studies are collected in a single companion document.</p>
+<p>Extended high-demand validation together with the bi-exponential and Gaussian kernel studies are collected in a single companion document.</p>
 <a class="text-link" href="supplementary.pdf">Open supplementary PDF →</a>
 </article>
 <article>
